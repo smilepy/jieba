@@ -89,6 +89,8 @@ class TFIDF(KeywordExtractor):
             allowPOS = frozenset(allowPOS)
             words = self.postokenizer.cut(sentence)
         else:
+            print("#####tfidf load_userdict#####")
+            self.tokenizer.load_userdict('/Users/smilepy/Desktop/customed_dict.txt')
             words = self.tokenizer.cut(sentence)
         freq = {}
         for w in words:

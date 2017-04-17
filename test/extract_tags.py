@@ -25,6 +25,20 @@ else:
 
 content = open(file_name, 'rb').read()
 
-tags = jieba.analyse.extract_tags(content, topK=topK)
+# tags = jieba.analyse.extract_tags(content, topK=topK)
+#
+# print(",".join(tags))
 
-print(",".join(tags))
+print('-'*40)
+print(' TF-IDF')
+print('-'*40)
+
+for x, w in jieba.analyse.extract_tags(content, withWeight=True):
+    print('%s %s' % (x, w))
+
+print('-'*40)
+print(' TextRank')
+print('-'*40)
+
+for x, w in jieba.analyse.textrank(content, withWeight=True):
+    print('%s %s' % (x, w))

@@ -78,6 +78,8 @@ class TextRank(KeywordExtractor):
             - withFlag: if True, return a list of pair(word, weight) like posseg.cut
                         if False, return a list of words
         """
+        print("#######textrank load_userdict########")
+        self.tokenizer.load_userdict('/Users/smilepy/Desktop/customed_dict.txt')
         self.pos_filt = frozenset(allowPOS)
         g = UndirectWeightedGraph()
         cm = defaultdict(int)
