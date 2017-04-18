@@ -60,6 +60,8 @@ class TFIDF(KeywordExtractor):
 
     def __init__(self, idf_path=None):
         self.tokenizer = jieba.dt
+        print("#####tfidf load_userdict#####")
+        self.tokenizer.load_userdict('/Users/smilepy/Desktop/customed_dict.txt')
         self.postokenizer = jieba.posseg.dt
         self.stop_words = self.STOP_WORDS.copy()
         self.idf_loader = IDFLoader(idf_path or DEFAULT_IDF)
@@ -89,8 +91,6 @@ class TFIDF(KeywordExtractor):
             allowPOS = frozenset(allowPOS)
             words = self.postokenizer.cut(sentence)
         else:
-            print("#####tfidf load_userdict#####")
-            self.tokenizer.load_userdict('/Users/smilepy/Desktop/customed_dict.txt')
             words = self.tokenizer.cut(sentence)
         freq = {}
         for w in words:
